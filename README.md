@@ -30,7 +30,7 @@
 <a href="https://huggingface.co/datasets/Cusyoung/SpaCE-10"><img src="https://img.shields.io/badge/HuggingFace-Dataset-yellow?style=for-the-badge&logo=huggingface"></a>
 <!-- <a href="#"><img src="https://img.shields.io/badge/BaiduNetDisk-download-blue?style=for-the-badge"></a> -->
 <!-- <a href="#"><img src="https://img.shields.io/badge/ScanNet++-Scenes-green?style=for-the-badge"></a> -->
-
+---
 # 🧠 What is SpaCE-10?
 
 **SpaCE-10** is a **compositional spatial intellegence benchmark** for evaluating **Multimodal Large Language Models (MLLMs)** in indoor environments. It spans:
@@ -39,6 +39,7 @@
 - ✅ 8 **compositional QA types**
 - ✅ 5,000+ QA pairs
 - ✅ 811 indoor scenes (ScanNet++, ScanNet, 3RScan, ARKitScene)
+
 <br><br>
 <img src="assets/space-10-teaser.png" width="100%">
 <br><br>
