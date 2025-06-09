@@ -41,6 +41,8 @@
 - ✅ 8 **compositional QA types**
 - ✅ 5,000+ QA pairs
 - ✅ 811 indoor scenes (ScanNet++, ScanNet, 3RScan, ARKitScene)
+- ✅ span both 2D and 3D MLLMs evaluation
+
 <div align="center">
 <br><br>
 <img src="assets/space-10-teaser.png" width="100%">
@@ -51,48 +53,37 @@
 ---
 # 🔥 News
 <!-- - 🤖 [2025/06/10] Baseline results with GPT-4o, InternVL, Claude-3, LLaVA and more are available. -->
-- 📢 [2025/06/08] We have released the dataset and evaluation code.
+- 🤖 [2025/06/09] Scans for 3D MLLMs and our manually collected 3D snapshots are coming soon.
+- 🤖 [2025/06/09] Evaluation code is coming soon.
+- 📢 [2025/06/08] We have released the benchmark for 2D MLLMs.
 ---
 
 
-<!-- SpaCE-10 emphasizes **scene generalization**, **compositional reasoning**, and **multi-view fusion** under open-vocabulary QA settings.
 
----
-
-# 📦 Dataset
-
-| Item | Details |
-|------|---------|
-| QA Pairs | 5,000+ |
-| Scenes | 811 |
-| Tasks | Atomic QA, Compositional QA |
-| Modality | 3D Point Clouds + Language |
-| Format | JSON + SceneMesh (.ply) |
-
-> 📥 Download dataset and evaluation toolkit [here](https://huggingface.co/YOUR_ORG/SpaCE-10)
-
---- -->
-
-<!-- # 🏁 Benchmark Capabilities
-
-| Category       | Example Tasks                        |
-|----------------|--------------------------------------|
-| Atomic         | Relative position, orientation       |
-| Compositional  | Scene planning, spatial chaining     |
-| Reasoning Mode | Multiple-choice QA, point QA         |
-| Modal Input    | 3D scene / multi-view / language     | -->
-
-<!-- <p align="center">
-  <img src="assets/qa_examples.png" width="90%">
-</p> -->
-
-<!-- --- -->
+# Environment 
+The evaluation of SpaCE-10 is based on lmms-eval. Thus, we follow the environment settings of lmms-eval.
+```bash
+git clone https://github.com/Cuzyoung/SpaCE-10.git
+cd SpaCE-10
+uv venv dev
+source dev/bin/activate
+uv pip install -e .
+```
 
 # Evaluation
-Th
-
+Take InternVL2.5-8B as an example:
 ```bash
-git clone https://github.com/YOUR_USERNAME/SpaCE-10.git
-cd SpaCE-10
-pip install -r requirements.txt
-python run_eval.py --model gpt-4o
+cd lmms-eval/run_bash
+bash internvl2.5-8b.sh
+```
+Notably, each time we test a new model, the corresponding environment of this model needs to be installed.
+
+---
+
+# 📄 Citation
+@article{gong2025space10,
+  title={SpaCE-10: A Comprehensive Benchmark for Multimodal Large Language Models in Compositional Spatial Intelligence},
+  author={Ziyang Gong, Wenhao Li, Oliver Ma, Songyuan Li, Jiayi Ji, Xue Yang, Gen Luo, Junchi Yan, Rongrong Ji},
+  journal={arXiv preprint arXiv:XXXX.XXXXX},
+  year={2025}
+}
