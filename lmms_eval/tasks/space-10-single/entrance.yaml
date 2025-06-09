@@ -1,10 +1,13 @@
 group: space-10-single
 task:
+  - eq-single
   - sq-single
   - sa-single
   - oo-single
+  - os-single
   - ep-single
   - fr-single
+  - sp-single
 metadata:
   version: 0.0
   sys_prompt: "There are several options:"

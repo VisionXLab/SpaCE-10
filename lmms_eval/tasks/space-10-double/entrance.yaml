@@ -1,10 +1,10 @@
 group: space-10-double
 task:
-  # - sa-double
-  # - os-double
-  # - oo-double
+  - sa-double
+  - os-double
+  - oo-double
   - ep-double
-  # - fr-double
+  - fr-double
 
 metadata:
   version: 0.0

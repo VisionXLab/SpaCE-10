@@ -52,10 +52,10 @@ else:
 
 print(API_KEY)
 print(API_URL)
-mmbench_evaluator = MMBench_Evaluator(sys_prompt=config["metadata"]["sys_prompt"], API_KEY=API_KEY, API_URL=API_URL, model_version=GPT_EVAL_MODEL_NAME)
+space_evaluator = SpaCE_Evaluator(sys_prompt=config["metadata"]["sys_prompt"], API_KEY=API_KEY, API_URL=API_URL, model_version=GPT_EVAL_MODEL_NAME)
 
 
-def mmbench_doc_to_visual(doc):
+def space_doc_to_visual(doc):
     converted_list = []
     if len(doc['image']) > 1:
         image_list = doc['image']
@@ -68,10 +68,10 @@ def mmbench_doc_to_visual(doc):
     return converted_list
 
 
-def mmbench_cn_cc_doc_to_text(doc, lmms_eval_specific_kwargs=None):
+def space_cn_cc_doc_to_text(doc, lmms_eval_specific_kwargs=None):
     option_candidate = ["A", "B", "C", "D", "E", "F"]
     shuffle = False
-    options_prompt, options_dict = mmbench_evaluator.create_options_prompt(doc, option_candidate)
+    options_prompt, options_dict = space_evaluator.create_options_prompt(doc, option_candidate)
 
     if shuffle:
         print('original opention dict:', options_dict)
@@ -112,7 +112,7 @@ def mmbench_cn_cc_doc_to_text(doc, lmms_eval_specific_kwargs=None):
     return query_prompt
 
 
-def mmbench_cn_cc_process_results(doc, results):
+def space_cn_cc_process_results(doc, results):
     
     model_response = results
     data = {
@@ -145,10 +145,10 @@ def mmbench_cn_cc_process_results(doc, results):
     return data
 
 
-def mmbench_cn_cc_aggregate_dev_results_eval(results, args):
+def space_cn_cc_aggregate_dev_results_eval(results, args):
     print(f"============= Existence QA EN Detailed Results =============")
-    overall_acc, category_acc, l2_category_acc = mmbench_evaluator.eval_result(results, eval_method="openai")
-    # file = generate_submission_file("mmbench_cn_cc_results.json", args)
+    overall_acc, category_acc, l2_category_acc = space_evaluator.eval_result(results, eval_method="openai")
+    # file = generate_submission_file("space_cn_cc_results.json", args)
     details_info = {
         "overall_acc": overall_acc,
         "category_acc": category_acc,
@@ -158,7 +158,7 @@ def mmbench_cn_cc_aggregate_dev_results_eval(results, args):
     #     json.dump(details_info, f)
     return overall_acc * 100
 
-def mmbench_cn_cc_aggregate_results(results, args):
+def space_cn_cc_aggregate_results(results, args):
     pass
     # df = pd.DataFrame(results)
     # file = generate_submission_file(f"scanqa_size_mix_en_results_{exp_num}.xlsx", args)

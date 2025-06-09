@@ -65,7 +65,7 @@ The evaluation of SpaCE-10 is based on lmms-eval. Thus, we follow the environmen
 ```bash
 git clone https://github.com/Cuzyoung/SpaCE-10.git
 cd SpaCE-10
-uv venv dev
+uv venv dev --python=3.10
 source dev/bin/activate
 uv pip install -e .
 ```
@@ -77,7 +77,6 @@ cd lmms-eval/run_bash
 bash internvl2.5-8b.sh
 ```
 Notably, each time we test a new model, the corresponding environment of this model needs to be installed.
-
 ---
 
 # 📄 Citation
