@@ -1,0 +1,12 @@
+group: space-10-single
+task:
+  - sq-single
+  - sa-single
+  - oo-single
+  - ep-single
+  - fr-single
+metadata:
+  version: 0.0
+  sys_prompt: "There are several options:"
+  gpt_eval_model_name: "gpt-4o-2024-11-20"
+  model-type: internvl-4b-new-single
