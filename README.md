@@ -22,7 +22,7 @@
 
 <sup>*</sup> Equal contribution
 
-<img src="https://visitor-badge.laobi.icu/badge?page_id=Cuzyoung.SpaCE-10.readme&left_color=lightgrey&right_color=green">
+<!-- <img src="https://visitor-badge.laobi.icu/badge?page_id=Cuzyoung.SpaCE-10.readme&left_color=lightgrey&right_color=green"> -->
 <img src="https://img.shields.io/badge/Updating%3F-yes-brightgreen">
 <img src="https://img.shields.io/github/stars/Cuzyoung/SpaCE-10.svg?logo=github&label=Stars&color=white">
 
@@ -31,6 +31,14 @@
 <!-- <a href="#"><img src="https://img.shields.io/badge/BaiduNetDisk-download-blue?style=for-the-badge"></a> -->
 <!-- <a href="#"><img src="https://img.shields.io/badge/ScanNet++-Scenes-green?style=for-the-badge"></a> -->
 
+# 🧠 What is SpaCE-10?
+
+**SpaCE-10** is a **compositional spatial intellegence benchmark** for evaluating **Multimodal Large Language Models (MLLMs)** in indoor environments. It spans:
+
+- ✅ 10 **atomic spatial capabilities**
+- ✅ 8 **compositional QA types**
+- ✅ 5,000+ QA pairs
+- ✅ 811 indoor scenes (ScanNet++, ScanNet, 3RScan, ARKitScene)
 <br><br>
 <img src="assets/space-10-teaser.png" width="100%">
 <br><br>
@@ -45,14 +53,6 @@
 
 ---
 
-# 🧠 What is SpaCE-10?
-
-**SpaCE-10** is a **compositional spatial intellegence benchmark** for evaluating **Multimodal Large Language Models (MLLMs)** in indoor environments. It spans:
-
-- ✅ 10 **atomic spatial capabilities**
-- ✅ 8 **compositional QA types**
-- ✅ 5,000+ QA pairs
-- ✅ 811 indoor scenes (ScanNet++, ScanNet, 3RScan, ARKitScene)
 
 <!-- SpaCE-10 emphasizes **scene generalization**, **compositional reasoning**, and **multi-view fusion** under open-vocabulary QA settings.
 
