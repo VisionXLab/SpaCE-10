@@ -28,6 +28,8 @@
 
 <a href="#"><img src="https://img.shields.io/badge/🌐_Project_Page-blue?style=for-the-badge"></a>
 <a href="https://huggingface.co/datasets/Cusyoung/SpaCE-10"><img src="https://img.shields.io/badge/HuggingFace-Dataset-yellow?style=for-the-badge&logo=huggingface"></a>
+</div>
+
 <!-- <a href="#"><img src="https://img.shields.io/badge/BaiduNetDisk-download-blue?style=for-the-badge"></a> -->
 <!-- <a href="#"><img src="https://img.shields.io/badge/ScanNet++-Scenes-green?style=for-the-badge"></a> -->
 ---
@@ -39,19 +41,17 @@
 - ✅ 8 **compositional QA types**
 - ✅ 5,000+ QA pairs
 - ✅ 811 indoor scenes (ScanNet++, ScanNet, 3RScan, ARKitScene)
-
+<div align="center">
 <br><br>
 <img src="assets/space-10-teaser.png" width="100%">
 <br><br>
-
 </div>
 
----
 
+---
 # 🔥 News
 <!-- - 🤖 [2025/06/10] Baseline results with GPT-4o, InternVL, Claude-3, LLaVA and more are available. -->
 - 📢 [2025/06/08] We have released the dataset and evaluation code.
-
 ---
 
 
@@ -88,9 +88,8 @@
 
 <!-- --- -->
 
-# ⚙️ Quick Start
-
-Coming soon:
+# Evaluation
+Th
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/SpaCE-10.git
