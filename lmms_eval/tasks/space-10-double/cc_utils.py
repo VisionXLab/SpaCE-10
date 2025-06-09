@@ -7,7 +7,7 @@ import pandas as pd
 import yaml
 from loguru import logger as eval_logger
 from lmms_eval.tasks._task_utils.file_utils import generate_submission_file
-from lmms_eval.tasks.space_10.mmbench_evals_2choice import MMBench_Evaluator_2choice
+from lmms_eval.tasks.space_10.space_evals_2choice import SpaCE_Evaluator_2choice
 import random
 import lmms_eval.tasks.space_10.evaluator as evaluator
 

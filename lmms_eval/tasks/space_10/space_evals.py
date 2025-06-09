@@ -11,10 +11,8 @@ import requests
 from loguru import logger as eval_logger
 from tqdm import tqdm
 import os
-import re
 
-
-class MMBench_Evaluator_2choice:
+class SpaCE_Evaluator:
     def __init__(self, sys_prompt="There are several options:", API_KEY="", API_URL="", model_version="gpt-3.5-turbo-0613"):
         self.sys_prompt = sys_prompt
         self.model_version = model_version
@@ -44,7 +42,7 @@ class MMBench_Evaluator_2choice:
 
     def extract_options(self, item):
         options = []
-        for c in "ABCDE":
+        for c in "ABCD":
             if c in item and not pd.isna(item[c]):
                 options.append(item[c])
             else:
@@ -53,7 +51,7 @@ class MMBench_Evaluator_2choice:
 
     def build_choices(self, item):
         ret = {}
-        for ch in "ABCDE":
+        for ch in "ABCD":
             if not pd.isna(item[ch]):
                 ret[ch] = item[ch]
         return ret
@@ -61,19 +59,19 @@ class MMBench_Evaluator_2choice:
     def build_prompt(self, question, options, prediction): 
         tmpl = (
             "You are an AI assistant who will help me to match an answer "
-            "with several options of a double-choice question. "
+            "with several options of a single-choice question. "
             "You are provided with a question, several options, and an answer, "
-            "and you need to find which two options are most similar to the answer. "
+            "and you need to find which option is most similar to the answer. "
             "If the meaning of all options are significantly different "
-            "from the answer, output F. "
-            "Your should output two uppercase characters in A, B, C, D, E "
-            "(if they are valid options), and F. \n"
+            "from the answer, output E. "
+            "Your should output a single uppercase character in A, B, C, D "
+            "(if they are valid options), and E. \n"
             "Example 1: \n"
             "Question: What is the main object in image?\nOptions: A. teddy bear "
-            "B. rabbit C. cat D. dog\nAnswer: a cute teddy bear and a balck cat\nYour output: A, C\n"
+            "B. rabbit C. cat D. dog\nAnswer: a cute teddy bear\nYour output: A\n"
             "Example 2: \n"
             "Question: What is the main object in image?\nOptions: A. teddy bear "
-            "B. rabbit C. cat D. dog\nAnswer: Spider\nYour output: F\n"
+            "B. rabbit C. cat D. dog\nAnswer: Spider\nYour output: E\n"
             "Example 3: \n"
             "Question: {}?\nOptions: {}\nAnswer: {}\nYour output: "
         )
@@ -82,27 +80,50 @@ class MMBench_Evaluator_2choice:
 
     # Prefetch Answers
     def can_infer_option(self, answer, num_choice=5):
-        choices = set(string.ascii_uppercase[:num_choice])  # A ~ E
-        answer = answer.strip().upper()
-        
-        # 以逗号切分，剔除空格
-        tokens = [t.strip() for t in answer.split(',')]
+        choices = string.ascii_uppercase[:num_choice]
+        if "Failed to obtain answer via API" in answer:
+            return False
 
-        # 过滤合法选项
-        filtered = sorted(list(set([t for t in tokens if t in choices])))
-        # print("filtered:",filtered)
-        if 'F' in filtered:
-            return filtered
-        elif 1 <= len(filtered) <= 2:
-            return filtered
-        
-        # print("prediction:", filtered)
+        def count(splits, choices="ABCDE", prefix="", suffix=""):
+            cnt = 0
+            for c in choices:
+                if prefix + c + suffix in splits:
+                    cnt += 1
+            return cnt
 
+        splits = [x.strip() for x in answer.split()]
+        if count(splits, choices) == 1:
+            for ch in choices:
+                if "A" in splits and len(splits) > 3:
+                    eval_logger.info(f"A might be a quantifier in the string: {answer}.")
+                    break
+                if ch in splits:
+                    return ch
+        tups = [("", "."), ("", ","), ("", ":"), ("", ")"), ("", ")."), ("(", ")"), ("(", ")."), (":", ""), (":", ","), (":", "."), (":", ")"), (":", ").")]
+        for tup in tups:
+            if count(splits, choices, prefix=tup[0], suffix=tup[1]) == 1:
+                for ch in choices:
+                    if tup[0] + ch + tup[1] in splits:
+                        return ch
+        return False
+
+    def can_infer_text(self, answer, choices):
+        answer = answer.lower()
+        assert isinstance(choices, dict)
+        for k in choices:
+            assert k in "ABCD"
+            choices[k] = str(choices[k]).lower()
+        cands = []
+        for k in choices:
+            if choices[k] in answer:
+                cands.append(k)
+        if len(cands) == 1:
+            return cands[0]
         return False
 
     def can_infer(self, answer, choices):
         copt = self.can_infer_option(answer)
-        return copt 
+        return copt if copt else self.can_infer_text(answer, choices)
 
     def prefetch_answer(self, item):
         choices = self.build_choices(item)
@@ -128,6 +149,7 @@ class MMBench_Evaluator_2choice:
             patience -= 1
             try:
                 response = self._post_request(payload)
+                # print('gpt is activated')
                 if n == 1:
                     prediction = response["choices"][0]["message"]["content"].strip()
                     if prediction and prediction != "":
@@ -145,46 +167,41 @@ class MMBench_Evaluator_2choice:
         return "Failed to obtain answer via API"
 
     def extract_answer_from_item(self, item):
-        # check if options are valid
         options = self.extract_options(item)
-        # build option string: A. aaa B. bbb
         option_str = self.build_option_str(options)
-        # post process prompt to extract answer
-        prompt = self.build_prompt(item["question"], option_str, item["prediction"])
 
+        prompt = self.build_prompt(item["question"], option_str, item["prediction"])
         retry = 3
         choices = self.build_choices(item)
-        # ret = self.can_infer(item["prediction"], choices)
-        ret = False
+
+        ret = self.can_infer(item["prediction"], choices)
         if ret:
             return ret, item["prediction"]
 
         while retry:
             ans = self.get_chat_response(prompt)
-            # print("ans", ans)
-            # print("choices", choices)
             if "Failed to obtain answer via API" in ans:
                 msg = "GPT API failed to answer. "
                 eval_logger.info(msg)
                 retry -= 1
             else:
                 ret = self.can_infer(ans, choices)
-                # print("ret:", ret)
                 if ret:
-                    eval_logger.info(f'Current Prediction is": {ret}')
+                    # print(222222)
                     return ret, ans
                 else:
-                    eval_logger.info(f'GPT output invalid letters or letters with error number in "ABCDE": {ans}')
+                    # print(11111111)
+                    eval_logger.info(f'GPT output includes 0 / >1 letter in "ABCD": {ans}')
                     retry -= 1
 
             if retry == 0:
-                num_options = sum([ch in item for ch in "ABCDE"])
+                num_options = sum([ch in item for ch in "ABCD"])
                 if num_options >= 2:
                     chars = string.ascii_uppercase[:num_options]
-                    chars = chars + "F"
+                    chars = chars + "E"
                     num_options += 1
                     tmp = num_options - 1
-                    return chars[tmp], f"Failed to predict, thus make answer is {chars[tmp]}. "
+                    return chars[tmp], "Failed to predict, thus randomly generate one. "
 
     # Extract answer from multiple rolling records
     def eval_sub_data(self, sub_data, answer_map):
@@ -194,20 +211,15 @@ class MMBench_Evaluator_2choice:
             item = sub_data.iloc[i]
             idx = item["index"]
             gt = answer_map[idx]
-
-            pred = self.prefetch_answer(item)  
-
+            pred = self.prefetch_answer(item)
             if not pred:
                 ret, _ = self.extract_answer_from_item(item)
                 pred = ret
 
-            print("gt:", gt)
-            print("pred:", pred)
-
             GT.append(gt)
             PRED.append(pred)
-
-            # print(pred, gt)
+            
+            print(pred, gt)
             if pred != gt:
                 return 0
         return 1
@@ -246,7 +258,7 @@ class MMBench_Evaluator_2choice:
         data = data.sort_values(by="index")
         data["prediction"] = [str(x) for x in data["prediction"]]
         for k in data.keys():
-            data[k.lower() if k not in "ABCDE" else k] = data.pop(k)
+            data[k.lower() if k not in "ABCD" else k] = data.pop(k)
 
         # meta = load(meta_file)
 
