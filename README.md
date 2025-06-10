@@ -22,7 +22,7 @@
 
 <sup>*</sup> Equal contribution
 
-<!-- <img src="https://visitor-badge.laobi.icu/badge?page_id=Cuzyoung.SpaCE-10.readme&left_color=lightgrey&right_color=green"> -->
+<img src="https://visitor-badge.laobi.icu/badge?page_id=Cuzyoung.SpaCE-10.readme&left_color=lightgrey&right_color=green">
 <img src="https://img.shields.io/badge/Updating%3F-yes-brightgreen">
 <img src="https://img.shields.io/github/stars/Cuzyoung/SpaCE-10.svg?logo=github&label=Stars&color=white">
 
@@ -54,7 +54,7 @@
 # 🔥 News
 <!-- - 🤖 [2025/06/10] Baseline results with GPT-4o, InternVL, Claude-3, LLaVA and more are available. -->
 - 🤖 [2025/06/09] Scans for 3D MLLMs and our manually collected 3D snapshots are coming soon.
-- 🤖 [2025/06/09] Evaluation code is coming soon.
+- 🤖 [2025/06/09] Evaluation code is released.
 - 📢 [2025/06/08] We have released the benchmark for 2D MLLMs.
 ---
 
