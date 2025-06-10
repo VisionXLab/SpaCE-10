@@ -15,7 +15,7 @@
 [Rongrong Ji](https://scholar.google.com/citations?user=XXXXX)<sup>2</sup>
 
 <sup>1</sup> Shanghai Jiao Tong University, 
-<sup>2</sup> Xiamen University, 
+<sup>2</sup> Xiamen University,  
 <sup>3</sup> Shanghai AI Lab, 
 <sup>4</sup> Sun Yat-sen University, 
 <sup>5</sup> National University of Singapore
