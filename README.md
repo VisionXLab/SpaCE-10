@@ -35,13 +35,13 @@
 ---
 # 🧠 What is SpaCE-10?
 
-**SpaCE-10** is a **compositional spatial intellegence benchmark** for evaluating **Multimodal Large Language Models (MLLMs)** in indoor environments. It spans:
+**SpaCE-10** is a **compositional spatial intellegence benchmark** for evaluating **Multimodal Large Language Models (MLLMs)** in indoor environments. Our contribution as follows:
 
-- ✅ 10 **atomic spatial capabilities**
-- ✅ 8 **compositional QA types**
-- ✅ 5,000+ QA pairs
-- ✅ 811 indoor scenes (ScanNet++, ScanNet, 3RScan, ARKitScene)
-- ✅ span both 2D and 3D MLLMs evaluation
+- 🧬 We define an **Atomic Capability Pool**, proposing 10 **atomic spatial capabilities.**
+- 🔗 Based on the composition of different atomic capabilities, we design **8 compositional QA types**.
+- 📈 SpaCE-10 benchmark contains 5,000+ QA pairs.
+- 🏠 All QA pairs come from 811 indoor scenes (ScanNet++, ScanNet, 3RScan, ARKitScene)
+- 🌍 SpaCE-10 spans both 2D and 3D MLLM evaluations and can be seamlessly adapted to MLLMs that accept 3D scan input.
 
 <div align="center">
 <br><br>
@@ -51,11 +51,12 @@
 
 
 ---
-# 🔥 News
+# 🔥🔥🔥 News
 <!-- - 🤖 [2025/06/10] Baseline results with GPT-4o, InternVL, Claude-3, LLaVA and more are available. -->
-- 🤖 [2025/06/09] Scans for 3D MLLMs and our manually collected 3D snapshots are coming soon.
-- 🤖 [2025/06/09] Evaluation code is released.
-- 📢 [2025/06/08] We have released the benchmark for 2D MLLMs.
+- 🖼️ [2025/06/11] Scans for 3D MLLMs and our manually collected 3D snapshots will be coming soon.
+- 💻 [2025/06/10] Evaluation code is released at followings.
+- 📊 [2025/06/09] We have released the benchmark for 2D MLLMs at [Hugging Face](https://huggingface.co/datasets/Cusyoung/SpaCE-10).
+- 📚 [2025/06/09] The paper of SpaCE-10 is released at [Arxiv](https://arxiv.org/abs/2506.07966v1), and it will be updating continually!
 ---
 
 
@@ -79,10 +80,10 @@ bash internvl2.5-8b.sh
 Notably, each time we test a new model, the corresponding environment of this model needs to be installed.
 ---
 
-# 📄 Citation
+# Citation
 @article{gong2025space10,
   title={SpaCE-10: A Comprehensive Benchmark for Multimodal Large Language Models in Compositional Spatial Intelligence},
   author={Ziyang Gong, Wenhao Li, Oliver Ma, Songyuan Li, Jiayi Ji, Xue Yang, Gen Luo, Junchi Yan, Rongrong Ji},
-  journal={arXiv preprint arXiv:XXXX.XXXXX},
+  journal={arXiv preprint arXiv:2506.07966},
   year={2025}
 }
