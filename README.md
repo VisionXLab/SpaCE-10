@@ -4,15 +4,15 @@
 
 <h1><img src="assets/space-10-logo.png" width="8%"> SpaCE-10: A Comprehensive Benchmark for Multimodal Large Language Models in Compositional Spatial Intelligence</h1>
 
-[Ziyang Gong](https://scholar.google.com/citations?user=cWip8QgAAAAJ)<sup>1*</sup>,
-[Wenhao Li](https://scholar.google.com/citations?user=XXXXX)<sup>2*</sup>,
+[Ziyang Gong](https://scholar.google.com/citations?user=cWip8QgAAAAJ&hl=zh-CN&oi=ao)<sup>1*</sup>,
+[Wenhao Li]()<sup>2*</sup>,
 [Oliver Ma]()<sup>3</sup>,
-[Songyuan Li](https://scholar.google.com/citations?user=XXXXX)<sup>4</sup>,
-[Jiayi Ji](https://scholar.google.com/citations?user=XXXXX)<sup>5</sup>,
-[Xue Yang](https://scholar.google.com/citations?user=XXXXX)<sup>1</sup>,
-[Gen Luo](https://scholar.google.com/citations?user=XXXXX)<sup>3</sup>,
-[Junchi Yan](https://scholar.google.com/citations?user=XXXXX)<sup>1</sup>,
-[Rongrong Ji](https://scholar.google.com/citations?user=XXXXX)<sup>2</sup>
+[Songyuan Li](https://scholar.google.com/citations?user=dVQGfEEAAAAJ&hl=zh-CN&oi=ao)<sup>4</sup>,
+[Jiayi Ji](https://scholar.google.com/citations?user=xp_rICcAAAAJ&hl=zh-CN&oi=ao)<sup>5</sup>,
+[Xue Yang](https://scholar.google.com/citations?user=2xTlvV0AAAAJ&hl=zh-CN)<sup>1</sup>,
+[Gen Luo](https://scholar.google.com/citations?user=EyZqU9gAAAAJ&hl=zh-CN)<sup>3</sup>,
+[Junchi Yan]()<sup>1</sup>,
+[Rongrong Ji]()<sup>2</sup>
 
 <sup>1</sup> Shanghai Jiao Tong University, 
 <sup>2</sup> Xiamen University,  
