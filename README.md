@@ -53,12 +53,39 @@
 ---
 # 🔥🔥🔥 News
 <!-- - 🤖 [2025/06/10] Baseline results with GPT-4o, InternVL, Claude-3, LLaVA and more are available. -->
-- 🖼️ [2025/06/11] Scans for 3D MLLMs and our manually collected 3D snapshots will be coming soon.
-- 💻 [2025/06/10] Evaluation code is released at followings.
-- 📊 [2025/06/09] We have released the benchmark for 2D MLLMs at [Hugging Face](https://huggingface.co/datasets/Cusyoung/SpaCE-10).
-- 📚 [2025/06/09] The paper of SpaCE-10 is released at [Arxiv](https://arxiv.org/abs/2506.07966v1), and it will be updating continually!
+- [2025/07/12] Adjust some QAs of Space-10 and update RemyxAI models' performance to leader board. 
+- [2025/06/11] Scans for 3D MLLMs and our manually collected 3D snapshots will be coming soon.
+- [2025/06/10] Evaluation code is released at followings.
+- [2025/06/09] We have released the benchmark for 2D MLLMs at [Hugging Face](https://huggingface.co/datasets/Cusyoung/SpaCE-10).
+- [2025/06/09] The paper of SpaCE-10 is released at [Arxiv](https://arxiv.org/abs/2506.07966v1)!
 ---
 
+
+# Performance Leader Board - Single-Choice
+🎉 LLaVA-OneVision-72B achieves the Rank 1 in all tested models.
+
+🎉 GPT-4o achieves the best score in tested Close-Source models.
+
+A large gap still exists between human and models in compositional spatial intelligence.
+
+
+<div align="center">
+<img src="assets/Perfomance_Leader_Board.png" width="100%">
+<br>
+</div>
+
+# Single-Choice vs. Double-Choice
+<div align="center">
+<img src="assets/single-double.png" width="100%">
+<br>
+</div>
+
+
+# Capability Score Ranking - Single-Choice
+<div align="center">
+<img src="assets/Capability_Score_Matrix.png" width="100%">
+<br>
+</div>
 
 
 # Environment 

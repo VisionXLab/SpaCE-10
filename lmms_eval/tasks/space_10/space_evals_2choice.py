@@ -82,21 +82,34 @@ class SpaCE_Evaluator_2choice:
 
     # Prefetch Answers
     def can_infer_option(self, answer, num_choice=5):
+        print("answer_1:", answer)
         choices = set(string.ascii_uppercase[:num_choice])  # A ~ E
         answer = answer.strip().upper()
-        
-        # 以逗号切分，剔除空格
-        tokens = [t.strip() for t in answer.split(',')]
+        print("answer_2:", answer)
 
-        # 过滤合法选项
+        try:
+            parsed = ast.literal_eval(answer)
+            if isinstance(parsed, list):
+                tokens = []
+                for item in parsed:
+                    if isinstance(item, str):
+                        tokens.extend([t.strip().upper() for t in item.split(',')])
+                    else:
+                        tokens.append(str(item).strip().upper())
+            else:
+                tokens = [t.strip().upper() for t in answer.split(',')]
+        except:
+            tokens = [t.strip().upper() for t in answer.split(',')]
+
+        print("answer_3:", tokens)
+
         filtered = sorted(list(set([t for t in tokens if t in choices])))
-        # print("filtered:",filtered)
+        print("filtered:", filtered)
+
         if 'F' in filtered:
             return filtered
         elif 1 <= len(filtered) <= 2:
             return filtered
-        
-        # print("prediction:", filtered)
 
         return False
 
@@ -229,6 +242,7 @@ class SpaCE_Evaluator_2choice:
 
     # Evaluate Results
     def eval_result(self, results, eval_method):
+
         rd.seed(2680)
         assert eval_method == "openai"
         # Set a large retry number to avoid failure
