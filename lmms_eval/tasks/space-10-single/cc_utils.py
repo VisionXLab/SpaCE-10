@@ -46,12 +46,7 @@ if API_TYPE == "openai":
 elif API_TYPE == "azure":
     API_URL = os.getenv("AZURE_ENDPOINT", "https://api.cognitive.microsoft.com/sts/v1.0/issueToken")
     API_KEY = os.getenv("AZURE_API_KEY", "YOUR_API_KEY")
-else:
-    API_URL = "https://api.claudeshop.top/v1/chat/completions"
-    API_KEY = "sk-apOuUOnFBJxjofJrqWfi9FiQrbpDlquu7kSfVkshHsIKbWg1"
 
-print(API_KEY)
-print(API_URL)
 space_evaluator = SpaCE_Evaluator(sys_prompt=config["metadata"]["sys_prompt"], API_KEY=API_KEY, API_URL=API_URL, model_version=GPT_EVAL_MODEL_NAME)
 
 
@@ -139,14 +134,14 @@ def space_cn_cc_process_results(doc, results):
         data["submission"][c] = doc.get(c, "nan")
         data["gpt_eval_score"][c] = doc.get(c, "nan")
     gpt_eval_score_data = data["gpt_eval_score"]
-    with open(json_file_path, 'a', encoding='utf-8') as json_file:
-        json.dump(gpt_eval_score_data, json_file, ensure_ascii=False, indent=4)
-    # evaluator.main(json_file_path)
+    # with open(json_file_path, 'a', encoding='utf-8') as json_file:
+    #     json.dump(gpt_eval_score_data, json_file, ensure_ascii=False, indent=4)
+    # # evaluator.main(json_file_path)
     return data
 
 
 def space_cn_cc_aggregate_dev_results_eval(results, args):
-    print(f"============= Existence QA EN Detailed Results =============")
+    print(f"============= SpaCE-10 EN Detailed Results =============")
     overall_acc, category_acc, l2_category_acc = space_evaluator.eval_result(results, eval_method="openai")
     # file = generate_submission_file("space_cn_cc_results.json", args)
     details_info = {
