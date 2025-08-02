@@ -11,11 +11,7 @@ from lmms_eval.tasks.space_10.space_evals import SpaCE_Evaluator
 import random
 import lmms_eval.tasks.space_10.evaluator as evaluator
 
-# proxy_url = "http://closeai-proxy.pjlab.org.cn:23128"
-# os.environ["http_proxy"] = proxy_url
-# os.environ["https_proxy"] = proxy_url
-# os.environ["HTTP_PROXY"] = proxy_url
-# os.environ["HTTPS_PROXY"] = proxy_url
+
 with open(Path(__file__).parent / "entrance.yaml", "r") as f:
     raw_data = f.readlines()
     model_type = raw_data[-1].split(': ')[-1].split('\n')[0]
