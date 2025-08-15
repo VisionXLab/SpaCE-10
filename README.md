@@ -57,7 +57,7 @@
 - [2025/06/11] Scans for 3D MLLMs and our manually collected 3D snapshots will be coming soon.
 - [2025/06/10] Evaluation code is released at followings.
 - [2025/06/09] We have released the benchmark for 2D MLLMs at [Hugging Face](https://huggingface.co/datasets/Cusyoung/SpaCE-10).
-- [2025/06/09] The paper of SpaCE-10 is released at [Arxiv](https://arxiv.org/abs/2506.07966v1)!
+- [2025/06/09] The paper of SpaCE-10 is released at [Arxiv](https://arxiv.org/abs/2506.07966)!
 ---
 
 
@@ -70,7 +70,7 @@ A large gap still exists between human and models in compositional spatial intel
 
 
 <div align="center">
-<img src="assets/Perfomance_Leader_Board.png" width="100%">
+<img src="assets/performance.png" width="100%">
 <br>
 </div>
 
