@@ -74,12 +74,6 @@ A large gap still exists between human and models in compositional spatial intel
 <br>
 </div>
 
-# Single-Choice vs. Double-Choice
-<div align="center">
-<img src="assets/single-double.png" width="100%">
-<br>
-</div>
-
 
 # Capability Score Ranking - Single-Choice
 <div align="center">
