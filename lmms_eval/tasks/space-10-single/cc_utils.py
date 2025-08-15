@@ -15,23 +15,18 @@ import lmms_eval.tasks.space_10.evaluator as evaluator
 with open(Path(__file__).parent / "entrance.yaml", "r") as f:
     raw_data = f.readlines()
     model_type = raw_data[-1].split(': ')[-1].split('\n')[0]
-    # print(model_type)
-    # exit()
+
     raw_data = raw_data[:-1]
-    # print(model_type)
-    # print()
+
     safe_data = []
     for i, line in enumerate(raw_data):
-        # remove function definition since yaml load cannot handle it
+
         if "!function" not in line:
             safe_data.append(line)
 
     config = yaml.safe_load("".join(safe_data))
 
-json_file_path =f'/mnt/petrelfs/gongziyang/all_mix_data_for_testing/experiments_dirs/{model_type}/oo_2_eval.json'
-output_dir = os.path.dirname(json_file_path)
-if not os.path.exists(output_dir):
-    os.makedirs(output_dir)
+
 
 GPT_EVAL_MODEL_NAME = config["metadata"]["gpt_eval_model_name"]
 API_TYPE = os.getenv("API_TYPE", "openai")
@@ -129,10 +124,8 @@ def space_cn_cc_process_results(doc, results):
     for c in option_candidate:
         data["submission"][c] = doc.get(c, "nan")
         data["gpt_eval_score"][c] = doc.get(c, "nan")
-    gpt_eval_score_data = data["gpt_eval_score"]
-    # with open(json_file_path, 'a', encoding='utf-8') as json_file:
-    #     json.dump(gpt_eval_score_data, json_file, ensure_ascii=False, indent=4)
-    # # evaluator.main(json_file_path)
+
+
     return data
 
 
@@ -145,14 +138,8 @@ def space_cn_cc_aggregate_dev_results_eval(results, args):
         "category_acc": category_acc,
         "l2_category_acc": l2_category_acc,
     }
-    # with open(file, "w") as f:
-    #     json.dump(details_info, f)
+
     return overall_acc * 100
 
 def space_cn_cc_aggregate_results(results, args):
     pass
-    # df = pd.DataFrame(results)
-    # file = generate_submission_file(f"scanqa_size_mix_en_results_{exp_num}.xlsx", args)
-    # with pd.ExcelWriter(file) as writer:
-    #     df.to_excel(writer, index=False)
-    # eval_logger.info(f"Saved results to {file}")
