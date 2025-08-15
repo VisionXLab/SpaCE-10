@@ -93,9 +93,9 @@ The evaluation of SpaCE-10 is based on lmms-eval. Thus, we follow the environmen
 ```bash
 git clone https://github.com/Cuzyoung/SpaCE-10.git
 cd SpaCE-10
-uv venv dev --python=3.10
-source dev/bin/activate
-uv pip install -e .
+conda create -n space-10 --python=3.10 -y
+conda activate space-10
+pip install -e .
 ```
 
 # Evaluation
