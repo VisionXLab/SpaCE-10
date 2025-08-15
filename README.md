@@ -45,7 +45,7 @@
 
 <div align="center">
 <br><br>
-<img src="assets/space-10-teaser.png" width="100%">
+<img src="assets/teaser.png" width="100%">
 <br><br>
 </div>
 
@@ -77,7 +77,7 @@ A large gap still exists between human and models in compositional spatial intel
 
 # Capability Score Ranking - Single-Choice
 <div align="center">
-<img src="assets/Capability_Score_Matrix.png" width="100%">
+<img src="assets/Capability_Score.png" width="100%">
 <br>
 </div>
 
