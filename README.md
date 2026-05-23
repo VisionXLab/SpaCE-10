@@ -35,7 +35,7 @@
 ---
 # 🧠 What is SpaCE-10?
 
-**SpaCE-10** is a **compositional spatial intellegence benchmark** for evaluating **Multimodal Large Language Models (MLLMs)** in indoor environments. Our contribution as follows:
+**SpaCE-10** is a **compositional spatial intelligence benchmark** for evaluating **Multimodal Large Language Models (MLLMs)** in indoor environments. Our contribution as follows:
 
 - 🧬 We define an **Atomic Capability Pool**, proposing 10 **atomic spatial capabilities.**
 - 🔗 Based on the composition of different atomic capabilities, we design **8 compositional QA types**.
